@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/coinsList">
+
+    <fragment
+        android:id="@+id/coinsList"
+        android:name="com.example.edu.mobileup.ui.coinsList.CoinsList"
+        android:label="fragment_coins_list"
+        tools:layout="@layout/fragment_coins_list" >
+        <action
+            android:id="@+id/action_coinsList_to_coinInfo"
+            app:destination="@id/coinInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/coinInfo"
+        android:name="com.example.edu.mobileup.ui.coinInfo.CoinInfo"
+        android:label="fragment_coin_info"
+        tools:layout="@layout/fragment_coin_info" />
+</navigation>
