@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.edu.mobileup.data.ResponseState
 import com.example.edu.mobileup.data.coinListData.CoinsListItem
-import com.example.edu.mobileup.domain.usecases.CoinsListUseCase
+import com.example.edu.mobileup.domain.coinsListUseCase.CoinsListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +24,7 @@ class CoinsListViewModel @Inject constructor(
 
     fun getCoinsList(currency:String){
         viewModelScope.launch(Dispatchers.IO) {
-
+            _coinsList.update { ResponseState.Loading() }
             runCatching { useCase.getCoinsList(currency = currency) }
                 .onFailure {
                     it.printStackTrace()

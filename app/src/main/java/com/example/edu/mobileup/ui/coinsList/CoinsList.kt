@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.edu.mobileup.databinding.FragmentCoinsListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +28,16 @@ class CoinsList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        prepareClickListeners()
         viewModel.getCoinsList("usd")
+    }
+
+    private fun prepareClickListeners(){
+        binding.btTest.setOnClickListener {
+            findNavController().navigate(
+                CoinsListDirections.actionCoinsListToCoinInfo()
+            )
+        }
     }
 
 
