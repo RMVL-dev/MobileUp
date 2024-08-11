@@ -22,10 +22,10 @@ class CoinsListViewModel @Inject constructor(
     val coinsLIst = _coinsList.asStateFlow()
 
 
-    fun getCoinsList(){
+    fun getCoinsList(currency:String){
         viewModelScope.launch(Dispatchers.IO) {
 
-            runCatching { useCase.getCoinsList() }
+            runCatching { useCase.getCoinsList(currency = currency) }
                 .onFailure {
                     it.printStackTrace()
                     _coinsList.update { ResponseState.Error() }

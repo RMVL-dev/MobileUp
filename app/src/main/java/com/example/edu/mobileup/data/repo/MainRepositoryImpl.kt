@@ -9,6 +9,6 @@ class MainRepositoryImpl @Inject constructor(
     private val api: MobileUPService
 ): MainRepository {
     override suspend fun getCoinsList(currency: String): Response<List<CoinsListItem>> {
-        return api.getCoinsList()
+        return api.getCoinsList(currency)
     }
 }

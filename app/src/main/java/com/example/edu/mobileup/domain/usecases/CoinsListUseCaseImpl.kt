@@ -8,8 +8,8 @@ import javax.inject.Inject
 class CoinsListUseCaseImpl @Inject constructor(
     private val repository: MainRepository
 ):CoinsListUseCase {
-    override suspend fun getCoinsList(): Response<List<CoinsListItem>> {
-        return repository.getCoinsList("usd")
+    override suspend fun getCoinsList(currency:String): Response<List<CoinsListItem>> {
+        return repository.getCoinsList(currency)
     }
 
 }
