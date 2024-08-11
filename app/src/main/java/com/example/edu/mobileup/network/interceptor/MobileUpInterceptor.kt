@@ -1,4 +1,4 @@
-package com.example.edu.mobileup.data.interceptor
+package com.example.edu.mobileup.network.interceptor
 
 import com.example.edu.mobileup.BuildConfig
 import okhttp3.Interceptor

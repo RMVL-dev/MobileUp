@@ -13,7 +13,7 @@ data class CoinsListItem (
     @SerializedName("image")
     val imageUrl:String? = null,
     @SerializedName("current_price")
-    val currentPrice:Int? = null,
+    val currentPrice:Double? = null,
     @SerializedName("market_cap")
     val marketCap:Long? = null,
     @SerializedName("market_cap_rank")
@@ -23,25 +23,25 @@ data class CoinsListItem (
     @SerializedName("total_volume")
     val totalVolume:Long? = null,
     @SerializedName("high_24h")
-    val high24h:Int? = null,
+    val high24h:Double? = null,
     @SerializedName("low_24h")
-    val low24h:Int? = null,
+    val low24h:Double? = null,
     @SerializedName("price_change_24h")
     val priceChange24h:Double? = null,
     @SerializedName("price_change_percentage_24h")
     val priceChangePercentage24h:Double? = null,
     @SerializedName("market_cap_change_24h")
-    val marketCapChange24h:Long? = null,
+    val marketCapChange24h:Double? = null,
     @SerializedName("market_cap_change_percentage_24h")
     val marketCapChangePercentage24h:Double? = null,
     @SerializedName("circulating_supply")
-    val circulatingSupply:Long? = null,
+    val circulatingSupply:Double? = null,
     @SerializedName("total_supply")
-    val totalSupply:Long? = null,
+    val totalSupply:Double? = null,
     @SerializedName("max_supply")
-    val maxSupply:Long? = null,
+    val maxSupply:Double? = null,
     @SerializedName("ath")
-    val ath:Int? = null,
+    val ath:Double? = null,
     @SerializedName("ath_change_percentage")
     val athChangePercentage:Double? = null,
     @SerializedName("ath_date")

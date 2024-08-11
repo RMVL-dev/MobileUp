@@ -1,8 +1,8 @@
 package com.example.edu.mobileup.di
 
 import com.example.edu.mobileup.BuildConfig
-import com.example.edu.mobileup.data.Service.MobileUPService
-import com.example.edu.mobileup.data.interceptor.MobileUpInterceptor
+import com.example.edu.mobileup.network.Service.MobileUPService
+import com.example.edu.mobileup.network.interceptor.MobileUpInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
