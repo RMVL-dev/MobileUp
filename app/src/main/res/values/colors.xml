@@ -12,5 +12,5 @@
     <color name="coin_change_price_negative">#FFEB5757</color>
 
     <!-- Others color -->
-    <color name="pg_color">#FFFF9F00</color>
+    <color name="primary_color">#FFFF9F00</color>
 </resources>

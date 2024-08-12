@@ -32,37 +32,33 @@ class CoinsList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (binding.chipRub.isChecked) {
-            viewModel.getCoinsList("rub")
-            coinsAdapter.isUSD = false
-        }
-        else {
-            viewModel.getCoinsList("usd")
-            coinsAdapter.isUSD = true
-        }
-
+        if (binding.chipRub.isChecked) getRUB() else getUSD()
         prepareClickListeners()
-
         binding.rvCoins.adapter = coinsAdapter
+
         collectFlowWhenStarted(viewModel.coinsLIst){state ->
             when(state){
                 is ResponseState.Error -> {
                     binding.progressIndicator.visibility = View.GONE
                     binding.rvCoins.visibility = View.GONE
+                    binding.ilError.root.visibility = View.VISIBLE
                 }
                 is ResponseState.Loading -> {
                     binding.progressIndicator.visibility = View.VISIBLE
                     binding.rvCoins.visibility = View.GONE
+                    binding.ilError.root.visibility = View.GONE
                 }
                 is ResponseState.None -> {
                     binding.progressIndicator.visibility = View.GONE
                     binding.rvCoins.visibility = View.GONE
+                    binding.ilError.root.visibility = View.GONE
                 }
                 is ResponseState.Success -> {
                     binding.progressIndicator.visibility = View.GONE
                     coinsAdapter.coinsList = state.data
                     binding.rvCoins.adapter?.notifyDataSetChanged()
                     binding.rvCoins.visibility = View.VISIBLE
+                    binding.ilError.root.visibility = View.GONE
                 }
             }
         }
@@ -71,16 +67,23 @@ class CoinsList : Fragment() {
     private fun prepareClickListeners() = with(binding){
         cgCurrencyCoice.setOnCheckedStateChangeListener { _, checkedIds ->
             when(checkedIds.first()) {
-                chipRub.id -> {
-                    viewModel.getCoinsList("rub")
-                    coinsAdapter.isUSD = false
-                }
-                chipUsd.id -> {
-                    viewModel.getCoinsList("usd")
-                    coinsAdapter.isUSD = true
-                }
+                chipRub.id -> { getRUB() }
+                chipUsd.id -> { getUSD() }
             }
         }
+        ilError.btnRetry.setOnClickListener {
+            if (binding.chipRub.isChecked) getRUB() else getUSD()
+        }
+    }
+
+    private fun getRUB(){
+        viewModel.getCoinsList("rub")
+        coinsAdapter.isUSD = false
+    }
+
+    private fun getUSD(){
+        viewModel.getCoinsList("usd")
+        coinsAdapter.isUSD = true
     }
 
 

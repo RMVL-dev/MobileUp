@@ -6,4 +6,9 @@
     <string name="coin_img_descriptor">Coin image</string>
     <string name="unknown_coin">Unknown coin</string>
     <string name="unknown_symbol">UCS</string>
+
+    <!-- Error Strings -->
+    <string name="bitcoin_img_descriptor">Bitcoin image</string>
+    <string name="error_descriptor">Произошла какая-то ошибка :(\nПопробуем снова?</string>
+    <string name="retry">Попробовать</string>
 </resources>
