@@ -3,7 +3,7 @@ package com.example.edu.mobileup.ui.coinInfo
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.edu.mobileup.data.ResponseState
-import com.example.edu.mobileup.data.coinInfoData.CoinInfo
+import com.example.edu.mobileup.data.coinInfoData.CoinInfoData
 import com.example.edu.mobileup.domain.coinInfoUseCase.CoinInfoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +18,7 @@ class CoinInfoViewModel @Inject constructor(
     private val useCase: CoinInfoUseCase
 ):ViewModel() {
 
-    private val _coin = MutableStateFlow<ResponseState<CoinInfo>>(ResponseState.None())
+    private val _coin = MutableStateFlow<ResponseState<CoinInfoData>>(ResponseState.None())
     val coin = _coin.asStateFlow()
 
     fun getCoin(id:String){

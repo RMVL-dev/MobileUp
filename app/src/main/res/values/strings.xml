@@ -11,4 +11,10 @@
     <string name="bitcoin_img_descriptor">Bitcoin image</string>
     <string name="error_descriptor">Произошла какая-то ошибка :(\nПопробуем снова?</string>
     <string name="retry">Попробовать</string>
+
+    <!-- Coin Info Strings -->
+    <string name="bt_back_descriptor">Button Back</string>
+    <string name="description">Описание</string>
+    <string name="categories">Категории</string>
+    <string name="unknown_descriptor">Description not found</string>
 </resources>

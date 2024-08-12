@@ -18,5 +18,10 @@
         android:id="@+id/coinInfo"
         android:name="com.example.edu.mobileup.ui.coinInfo.CoinInfo"
         android:label="fragment_coin_info"
-        tools:layout="@layout/fragment_coin_info" />
+        tools:layout="@layout/fragment_coin_info" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

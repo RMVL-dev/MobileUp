@@ -10,6 +10,7 @@ class CoinsListAdapter:RecyclerView.Adapter<CoinViewHolder>() {
 
     var coinsList:List<CoinsListItem> = emptyList()
     var isUSD:Boolean = true
+    var clickListener: (String?) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinViewHolder =
         CoinViewHolder(
@@ -23,6 +24,7 @@ class CoinsListAdapter:RecyclerView.Adapter<CoinViewHolder>() {
         coinsList.size
 
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
-        holder.bind(coinsList[position], isUSD)
+        // coin id into click listener
+        holder.bind(coinsList[position], isUSD){ coinId -> clickListener(coinId) }
     }
 }

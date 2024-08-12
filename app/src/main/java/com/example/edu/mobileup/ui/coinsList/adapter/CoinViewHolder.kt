@@ -14,7 +14,16 @@ class CoinViewHolder(
     private val context: Context
 ): RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(coin:CoinsListItem, isUsd:Boolean) = with(binding){
+    fun bind(
+        coin:CoinsListItem,
+        isUsd:Boolean,
+        onClick:(String?)->Unit
+    ) = with(binding){
+
+        binding.root.setOnClickListener {
+            onClick(coin.id)
+        }
+
         tvCoinName.text = coin.name ?: context.getString(R.string.unknown_coin)
         tvCoinSymbol.text = coin.symbol ?: context.getString(R.string.unknown_symbol)
         val formattedPrice = DecimalFormat("#,###.##").format(coin.currentPrice)

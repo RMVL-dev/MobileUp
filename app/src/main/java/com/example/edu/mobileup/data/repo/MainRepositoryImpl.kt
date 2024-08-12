@@ -1,6 +1,6 @@
 package com.example.edu.mobileup.data.repo
 
-import com.example.edu.mobileup.data.coinInfoData.CoinInfo
+import com.example.edu.mobileup.data.coinInfoData.CoinInfoData
 import com.example.edu.mobileup.network.Service.MobileUPService
 import com.example.edu.mobileup.data.coinListData.CoinsListItem
 import retrofit2.Response
@@ -13,7 +13,7 @@ class MainRepositoryImpl @Inject constructor(
         return api.getCoinsList(currency)
     }
 
-    override suspend fun getCoin(id: String): Response<CoinInfo> {
+    override suspend fun getCoin(id: String): Response<CoinInfoData> {
         return api.getCoin(id = id)
     }
 }

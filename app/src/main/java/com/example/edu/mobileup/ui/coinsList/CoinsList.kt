@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.edu.mobileup.data.ResponseState
 import com.example.edu.mobileup.databinding.FragmentCoinsListBinding
 import com.example.edu.mobileup.ui.coinsList.adapter.CoinsListAdapter
@@ -73,6 +74,11 @@ class CoinsList : Fragment() {
         }
         ilError.btnRetry.setOnClickListener {
             if (binding.chipRub.isChecked) getRUB() else getUSD()
+        }
+        coinsAdapter.clickListener = {coinId ->
+            findNavController().navigate(
+                CoinsListDirections.actionCoinsListToCoinInfo(coinId)
+            )
         }
     }
 
