@@ -6,6 +6,8 @@ import com.bumptech.glide.Glide
 import com.example.edu.mobileup.R
 import com.example.edu.mobileup.data.coinListData.CoinsListItem
 import com.example.edu.mobileup.databinding.CoinItemBinding
+import java.text.DecimalFormat
+import kotlin.math.abs
 
 class CoinViewHolder(
     private val binding:CoinItemBinding,
@@ -15,7 +17,8 @@ class CoinViewHolder(
     fun bind(coin:CoinsListItem, isUsd:Boolean) = with(binding){
         tvCoinName.text = coin.name ?: context.getString(R.string.unknown_coin)
         tvCoinSymbol.text = coin.symbol ?: context.getString(R.string.unknown_symbol)
-        tvCoinPrice.text = if (isUsd) "$ ${coin.currentPrice}" else "\u20BD ${coin.currentPrice}"
+        val formattedPrice = DecimalFormat("#,###.##").format(coin.currentPrice)
+        tvCoinPrice.text = if (isUsd) "$ $formattedPrice" else "\u20BD $formattedPrice"
 
         coin.priceChangePercentage24h?.let {priceChange ->
             tvCoinPriceChangePercentage.setTextColor(
@@ -24,10 +27,11 @@ class CoinViewHolder(
                 else
                     context.getColor(R.color.coin_change_price_negative)
             )
+            val formattedPercentage = DecimalFormat("#0.00").format(abs(priceChange))
             tvCoinPriceChangePercentage.text = if (priceChange > 0)
-                "+${priceChange}"
+                "+ ${formattedPercentage}%"
             else
-                priceChange.toString()
+                "- $formattedPercentage%"
         }
 
         Glide.with(ivCoinImage)
