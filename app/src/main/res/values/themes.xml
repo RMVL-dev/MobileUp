@@ -3,7 +3,20 @@
     <style name="Base.Theme.MobileUP" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="chipStyle">@style/ChipTheme</item>
     </style>
 
     <style name="Theme.MobileUP" parent="Base.Theme.MobileUP" />
+
+    <style name="ChipTheme" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="chipCornerRadius">50dp</item>
+        <item name="chipBackgroundColor">@color/chip_color</item>
+        <item name="chipStrokeColor">@color/chip_color</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textStartPadding">30dp</item>
+        <item name="textEndPadding">30dp</item>
+    </style>
 </resources>

@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import com.example.edu.mobileup.data.ResponseState
 import com.example.edu.mobileup.databinding.FragmentCoinsListBinding
+import com.example.edu.mobileup.ui.coinsList.adapter.CoinsListAdapter
+import com.example.edu.mobileup.ui.helpers.collectFlowWhenStarted
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +19,7 @@ class CoinsList : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<CoinsListViewModel>()
+    private val coinsAdapter = CoinsListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,15 +31,55 @@ class CoinsList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (binding.chipRub.isChecked) {
+            viewModel.getCoinsList("rub")
+            coinsAdapter.isUSD = false
+        }
+        else {
+            viewModel.getCoinsList("usd")
+            coinsAdapter.isUSD = true
+        }
+
         prepareClickListeners()
-        viewModel.getCoinsList("usd")
+
+        binding.rvCoins.adapter = coinsAdapter
+        collectFlowWhenStarted(viewModel.coinsLIst){state ->
+            when(state){
+                is ResponseState.Error -> {
+                    binding.progressIndicator.visibility = View.GONE
+                    binding.rvCoins.visibility = View.GONE
+                }
+                is ResponseState.Loading -> {
+                    binding.progressIndicator.visibility = View.VISIBLE
+                    binding.rvCoins.visibility = View.GONE
+                }
+                is ResponseState.None -> {
+                    binding.progressIndicator.visibility = View.GONE
+                    binding.rvCoins.visibility = View.GONE
+                }
+                is ResponseState.Success -> {
+                    binding.progressIndicator.visibility = View.GONE
+                    coinsAdapter.coinsList = state.data
+                    binding.rvCoins.adapter?.notifyDataSetChanged()
+                    binding.rvCoins.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 
-    private fun prepareClickListeners(){
-        binding.btTest.setOnClickListener {
-            findNavController().navigate(
-                CoinsListDirections.actionCoinsListToCoinInfo()
-            )
+    private fun prepareClickListeners() = with(binding){
+        cgCurrencyCoice.setOnCheckedStateChangeListener { _, checkedIds ->
+            when(checkedIds.first()) {
+                chipRub.id -> {
+                    viewModel.getCoinsList("rub")
+                    coinsAdapter.isUSD = false
+                }
+                chipUsd.id -> {
+                    viewModel.getCoinsList("usd")
+                    coinsAdapter.isUSD = true
+                }
+            }
         }
     }
 

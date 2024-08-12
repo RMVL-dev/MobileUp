@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal = "16dp"
+    android:paddingVertical="8dp">
+
+    <ImageView
+        android:id="@+id/iv_coin_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        tools:src="@drawable/bitcoin_img"
+        android:contentDescription="@string/coin_img_descriptor"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_coin_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        tools:text="Bitcoin"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/coin_name_text_color"
+
+        app:layout_constraintTop_toTopOf="@+id/iv_coin_image"
+        app:layout_constraintStart_toEndOf="@+id/iv_coin_image"
+        />
+
+    <TextView
+        android:id="@+id/tv_coin_symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        tools:text="BTC"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:textSize="13sp"
+        android:textColor="@color/coin_symbol_text_color"
+
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_coin_name"
+        app:layout_constraintStart_toStartOf="@+id/tv_coin_name"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_coin_image"
+        />
+
+    <TextView
+        android:id="@+id/tv_coin_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        tools:text="$ 28,600.74"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/coin_name_text_color"
+
+
+        app:layout_constraintTop_toTopOf="@+id/iv_coin_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_coin_price_change_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        tools:text="+ 4.05%"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:textSize="13sp"
+        tools:textColor="@color/coin_change_price_positive"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_coin_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

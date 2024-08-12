@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">MobileUP</string>
+    <string name="app_name">Список криптовалют</string>
+    <string name="currency_usd">usd</string>
+    <string name="currency_rub">rub</string>
+    <!-- Coin item strings -->
+    <string name="coin_img_descriptor">Coin image</string>
+    <string name="unknown_coin">Unknown coin</string>
+    <string name="unknown_symbol">UCS</string>
 </resources>

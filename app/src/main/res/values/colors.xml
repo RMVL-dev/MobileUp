@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="chip_orange">#20FF9F00</color>
+    <color name="chip_text_orange">#FFFFAD25</color>
+    <color name="chip_gray">#20000000</color>
+    <!--Coin item colors -->
+    <color name="coin_name_text_color">#FF525252</color>
+    <color name="coin_symbol_text_color">#FF9B9B9B</color>
+    <color name="coin_change_price_positive">#FF2A9D8F</color>
+    <color name="coin_change_price_negative">#FFEB5757</color>
+
+    <!-- Others color -->
+    <color name="pg_color">#FFFF9F00</color>
 </resources>
