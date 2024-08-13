@@ -41,25 +41,31 @@ class CoinsList : Fragment() {
             when(state){
                 is ResponseState.Error -> {
                     binding.progressIndicator.visibility = View.GONE
-                    binding.rvCoins.visibility = View.GONE
+                    //binding.rvCoins.visibility = View.GONE
+                    binding.swrlCoinList.visibility = View.GONE
                     binding.ilError.root.visibility = View.VISIBLE
+                    binding.swrlCoinList.isRefreshing = false
                 }
                 is ResponseState.Loading -> {
                     binding.progressIndicator.visibility = View.VISIBLE
-                    binding.rvCoins.visibility = View.GONE
+                    //binding.rvCoins.visibility = View.GONE
+                    binding.swrlCoinList.visibility = View.GONE
                     binding.ilError.root.visibility = View.GONE
                 }
                 is ResponseState.None -> {
                     binding.progressIndicator.visibility = View.GONE
-                    binding.rvCoins.visibility = View.GONE
+                    //binding.rvCoins.visibility = View.GONE
+                    binding.swrlCoinList.visibility = View.GONE
                     binding.ilError.root.visibility = View.GONE
+                    binding.swrlCoinList.isRefreshing = false
                 }
                 is ResponseState.Success -> {
                     binding.progressIndicator.visibility = View.GONE
                     coinsAdapter.coinsList = state.data
                     binding.rvCoins.adapter?.notifyDataSetChanged()
-                    binding.rvCoins.visibility = View.VISIBLE
+                    binding.swrlCoinList.visibility = View.VISIBLE
                     binding.ilError.root.visibility = View.GONE
+                    binding.swrlCoinList.isRefreshing = false
                 }
             }
         }
@@ -79,6 +85,10 @@ class CoinsList : Fragment() {
             findNavController().navigate(
                 CoinsListDirections.actionCoinsListToCoinInfo(coinId)
             )
+        }
+
+        swrlCoinList.setOnRefreshListener {
+            if (binding.chipRub.isChecked) getRUB() else getUSD()
         }
     }
 
