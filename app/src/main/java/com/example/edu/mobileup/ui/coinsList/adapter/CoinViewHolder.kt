@@ -10,14 +10,14 @@ import java.text.DecimalFormat
 import kotlin.math.abs
 
 class CoinViewHolder(
-    private val binding:CoinItemBinding,
-    private val context: Context
+    val binding:CoinItemBinding,
+    val context: Context
 ): RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(
+    inline fun bind(
         coin:CoinsListItem,
         isUsd:Boolean,
-        onClick:(String?)->Unit
+        crossinline onClick:(String?)->Unit
     ) = with(binding){
 
         binding.root.setOnClickListener {
